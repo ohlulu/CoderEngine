@@ -16,7 +16,8 @@ class UIImageEngine:
         self.iamgeList.append(name)
 
     def __imageStrf(self, imageName):
-        return f"    static let {imageName} = UIImage(named: {imageName})!"
+        return "    static var %(imageName)s: UIImage {\n        return UIImage(named: %(imageName)s)!\n    }" % { "imageName": imageName }
+        # f"    static var {imageName} UIImage(named: {imageName})!"
 
     def output(self, fileName):
 
