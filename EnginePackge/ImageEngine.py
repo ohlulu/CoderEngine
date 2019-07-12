@@ -1,11 +1,19 @@
 from os import listdir
+
 from os.path import isfile, join
+from tkinter import filedialog
+from tkinter import *
+
 import glob
 import os
 
 import OhEngine
 
-allFile = os.listdir("./images/")
+root = Tk()
+root.withdraw()
+folder = filedialog.askdirectory(initialdir = "/",title = "Select file")
+
+allFile = os.listdir(folder)
 
 engine = OhEngine.UIImageEngine()
 
