@@ -21,8 +21,7 @@ class UIImageEngine:
 
     def output(self, fileName):
 
-        file = open(f"./{fileName}.swift", "x")
-
+        file = open(f"{fileName}.swift", "x")
 
         today = datetime.datetime.today()
 
