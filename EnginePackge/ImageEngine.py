@@ -1,3 +1,5 @@
+# package cmd
+# pyinstaller -F ./ImageEngine.py
 from os import listdir
 
 from os.path import isfile, join
