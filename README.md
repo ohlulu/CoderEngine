@@ -6,13 +6,23 @@
 
 
 
-1. Download project 
+you can run with
 
-2. Replace the image folder (folder name must be `imgaes`)
-3. in terminal, cd to this path
-4. $ python3 ImageEngine.py
+`$ python3 ImageEngine.py`
+
+or
+
+> click ImageEngine.exec
+
+
+
+And Then, ImageEngine will creat a `ImageHelper.switf` in desktop. like this 👇
+
+![](final.png)
 
 ---
+
+### Enjoy it!
 
 [My website](https://www.ohlulu.tw)
 
