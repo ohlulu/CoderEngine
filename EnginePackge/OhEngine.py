@@ -1,4 +1,5 @@
 import datetime
+import os.path
 
 class UIImageEngine:
 
@@ -20,8 +21,9 @@ class UIImageEngine:
         # f"    static var {imageName} UIImage(named: {imageName})!"
 
     def output(self, fileName):
+        homedir = os.path.expanduser("~")
 
-        file = open(f"{fileName}.swift", "x")
+        file = open(f"{homedir}/Desktop/{fileName}.swift", "w+")
 
         today = datetime.datetime.today()
 
