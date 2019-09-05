@@ -17,7 +17,7 @@ folder = filedialog.askdirectory(initialdir = "/",title = "Select file")
 
 allFile = os.listdir(folder)
 
-engine = OhEngine.UIImageEngine()
+engine = OhEngine.UIButtonEngin()
 
 fileSet = set()
 for file in allFile:
@@ -30,8 +30,13 @@ for file in allFile:
     fileSet.add(file[0:endIndex])
     
 for file in fileSet:
-    engine.addImage(file)
+    if "Pressed" not in file and "Normal" not in file and "Disabled" not in file:
+        continue
+    else:
+        engine.addFileWith(file)
 
-engine.output("ImageFactory")
-print("file count -> ", len(fileSet))
+engine.output("ButtonFactory")        
+
+
+# print("file count -> ", len(fileSet))
 # print(fileSet)
