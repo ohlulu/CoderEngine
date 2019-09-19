@@ -64,36 +64,48 @@ class UIButtonEngin:
         pass
 
     def addFileWith(self, file):
-        lowerFile = file.lower()
-        if "normal" in lowerFile:
-            lowerFile = file.replace("Normal","")
-        elif "pressed" in lowerFile:
-            lowerFile = file.replace("Pressed","")
-        elif "disabled" in lowerFile:
-            lowerFile = file.replace("Disabled","")
+        tmpfile = file
+        if "_normal" in file:
+            tmpfile = file.replace("_normal","")
+        elif "Normal" in file:
+            tmpfile = file.replace("Normal","")
+        elif "Pressed" in file:
+            tmpfile = file.replace("Pressed","")
+        elif "_pressed" in file:
+            tmpfile = file.replace("_pressed","")
+        elif "Disabled" in file:
+            tmpfile = file.replace("Disabled","")
+        elif "_disabled" in file:
+            tmpfile = file.replace("_disabled","")
 
-        if lowerFile in self.buttonList.keys():
+        if tmpfile[-1:] == "_":
+            tmpfile = tmpfile[:-1]
+            print("sliced file ->", tmpfile)
+            print("origin file ->", file)
+
+        if tmpfile in self.buttonList.keys():
             # print("in key", lowerFile)
-            self.buttonList[lowerFile].append(file)
+            self.buttonList[tmpfile].append(file)
         else:
             # print("not in key", lowerFile)
-            self.buttonList[lowerFile] = [file]
+            self.buttonList[tmpfile] = [file]
 
     def __buttonStrf(self, varName, buttonInfos):
         scope  = "\n\n    static var %(varName)s: UIButton {\n" % {"varName": varName}
         scope += "        return UIButton().oh\n"
         for info in buttonInfos:
-            if "Normal" in info:
+            if "Normal" in info or "normal" in info :
                 scope += "            .backgroundImage(.%(info)s, for: .normal)\n" % {"info": info}
-            if "Pressed" in info:
+            if "Pressed" in info or "pressed" in info:
                 scope += "            .backgroundImage(.%(info)s, for: .highlighted)\n" % {"info": info}
-            if "disabled" in info:
+            if "Disabled" in info or "disabled" in info:
                 scope += "            .backgroundImage(.%(info)s, for: .disabled)\n" % {"info": info}
         scope += "            .done()\n"   
         scope += "    }"
         return scope
     
     def output(self, fileName):
+        print(self.buttonList)
         homedir = os.path.expanduser("~")
 
         file = open(f"{homedir}/Desktop/{fileName}.swift", "w+")
@@ -117,6 +129,7 @@ import UIKit
 
 extension UIButton {
 """
+        print(len(self.buttonList))
         file.write(result %  {"header": header})
         for key in self.buttonList.keys():
             if len(self.buttonList[key]) == 1: continue

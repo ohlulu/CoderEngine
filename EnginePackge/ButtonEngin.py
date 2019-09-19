@@ -13,7 +13,7 @@ import OhEngine
 
 root = Tk()
 root.withdraw()
-folder = filedialog.askdirectory(initialdir = "/",title = "Select file")
+folder = filedialog.askdirectory(initialdir = "~/Desktop",title = "Select file")
 
 allFile = os.listdir(folder)
 
@@ -30,13 +30,12 @@ for file in allFile:
     fileSet.add(file[0:endIndex])
     
 for file in fileSet:
-    if "Pressed" not in file and "Normal" not in file and "Disabled" not in file:
+    lowerFile = file.lower()
+    if "pressed" not in lowerFile and "normal" not in lowerFile and "disabled" not in lowerFile:
         continue
     else:
         engine.addFileWith(file)
 
 engine.output("ButtonFactory")        
 
-
-# print("file count -> ", len(fileSet))
 # print(fileSet)
