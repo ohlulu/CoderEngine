@@ -1,32 +1,33 @@
 # CoderEngine
 
+## Demo
+
+![](ImageEngineDemo.gif)
+
+
+
 ## Usage
 
-![](demo.gif)
+1.  Drop ImageEngine to project. (check "copy items if needed")
+2.  Edit scheme -> Build -> pre-action -> click + -> New Run Script Action
+3.  "$SRCROOT/Demo/Factory/ImageEngine" "$SRCROOT/${ImageEngine path}" "$SRCROOT/${Path You want to save }/ImageFactory.swift"
+4.  Remember choice target.
+5.  Build.
+6.  Open finder and go to your project.
+7.  Drop Image ImageFactory.swift to your project. (uncheck "copy items if needed")
+8.  Enjoy it!
 
 
 
-you can run with
-
-```shell
-$ python3 ImageEngine.py
-```
-
-or
-
-> Click ImageEngine.exec
-
-
-
-And Then, ImageEngine will creat a `ImageHelper.switf` in desktop. like this 👇
+ImageEngine will creat a `ImageFactory.switf` in your project. like this 👇
 
 ![](final.png)
 
 
 
-### Enjoy it!
+# Thanks
 
-
+[KuoChingHao](https://github.com/KuoChingHao)
 
 ***
 
