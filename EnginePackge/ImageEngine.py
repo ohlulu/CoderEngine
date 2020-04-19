@@ -27,6 +27,6 @@ for path in os.listdir(inputPath):
         fileSet.add(imageFile[0:endIndex])
 
 engine = Engine.UIImageEngine()
-engine.imageList = fileSet
+engine.imageList = sorted(list(fileSet),key = lambda s: s[0].lower())
 engine.output(outputPath)
 print("file count -> ", len(fileSet))
