@@ -35,7 +35,7 @@ class UIImageEngine:
     def convert(self, imageName):
 
         stringList = imageName.split("_")
-        stringList = [s.capitalize() for s in stringList]
+        stringList = [s[:1].capitalize() + s[1:] for s in stringList if len(s) > 0 ]
         outputStr = "".join(stringList)
         lowercase = lambda s: s[:1].lower() + s[1:] if s else '' # just song for use lambda...
         return lowercase(outputStr)

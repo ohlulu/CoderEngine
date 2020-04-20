@@ -15,7 +15,7 @@ outputPath = sys.argv[2] if len(sys.argv) > 2 else "/"
 # move os workplace
 os.chdir(inputPath)
 
-fileSet = set()
+fileList = []
 
 class ImageFloderParser:
 
@@ -30,7 +30,7 @@ class ImageFloderParser:
             if isImageset: 
                 print("is image ->", path)
                 fileName = path.replace('.imageset', '')
-                fileSet.add(fileName)
+                fileList.append(fileName)
             elif os.path.isdir(path):
                 print("is floder ->", path)
                 self.parseFloder(os.listdir(path))
@@ -41,6 +41,6 @@ class ImageFloderParser:
 
 ImageFloderParser().parseFloder(os.listdir(inputPath))
 engine = Engine.UIImageEngine()
-engine.imageList = sorted(list(fileSet),key = lambda s: s[0].lower())
+engine.imageList = sorted(fileList,key = lambda s: s[0].lower())
 engine.output(outputPath)
-print("file count -> ", len(fileSet))
+print("file count -> ", len(fileList))
