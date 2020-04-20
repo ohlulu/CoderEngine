@@ -10,7 +10,7 @@
 
 1.  Drop ImageEngine to project. (check "copy items if needed")
 2.  Edit scheme -> Build -> pre-action -> click + -> New Run Script Action
-3.  "$SRCROOT/Demo/Factory/ImageEngine" "$SRCROOT/${ImageEngine path}" "$SRCROOT/${Path You want to save }/ImageFactory.swift"
+3.  "$SRCROOT/Demo/Factory/ImageEngine" "$SRCROOT/${Asset.xcasset_path}" "$SRCROOT/${path_you_want _to_save}/ImageFactory.swift"
 4.  Remember choice target.
 5.  Build.
 6.  Open finder and go to your project.
