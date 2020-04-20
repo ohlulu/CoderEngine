@@ -1,3 +1,5 @@
+# -*- coding: cp936 -*-
+# -*- coding: utf-8 -*-
 import sys
 import os
 import glob
@@ -14,18 +16,30 @@ outputPath = sys.argv[2] if len(sys.argv) > 2 else "/"
 os.chdir(inputPath)
 
 fileSet = set()
-for path in os.listdir(inputPath):
-    isImageFolder = ".imageset" in path and os.path.isdir(path)
-    if not isImageFolder: continue
-    for imageFile in os.listdir(path):
-        isImage = ".png" in imageFile or ".pdf" in imageFile
-        if not isImage: continue
-        try:
-            endIndex = str(imageFile).index("@")
-        except:
-            endIndex = str(imageFile).index(".")
-        fileSet.add(imageFile[0:endIndex])
 
+class ImageFloderParser:
+
+    def __init__(self):
+        pass
+
+    def parseFloder(self, targetPath):
+        print(targetPath)
+        for path in targetPath:
+            print("parse ->", path)
+            isImageset = ".imageset" in path
+            if isImageset: 
+                print("is image ->", path)
+                fileName = path.replace('.imageset', '')
+                fileSet.add(fileName)
+            elif os.path.isdir(path):
+                print("is floder ->", path)
+                self.parseFloder(os.listdir(path))
+            else:
+                print("nothing at all ->", path)
+                continue
+
+
+ImageFloderParser().parseFloder(os.listdir(inputPath))
 engine = Engine.UIImageEngine()
 engine.imageList = sorted(list(fileSet),key = lambda s: s[0].lower())
 engine.output(outputPath)

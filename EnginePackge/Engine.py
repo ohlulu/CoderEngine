@@ -15,7 +15,7 @@ class UIImageEngine:
     def __imageStrf(self, imageName):
         imageNameForVariable = self.convert(imageName)
         imageNameForVariable = self.removePunctuation(imageNameForVariable)
-        return "    static var %(imageNameForVariable)s: UIImage { return UIImage(named: \"%(imageName)s\")! }\n\n" % { "imageNameForVariable": imageNameForVariable,"imageName": imageName }
+        return "    static var %(imageNameForVariable)s: UIImage { UIImage(named: \"%(imageName)s\")! }\n\n" % { "imageNameForVariable": imageNameForVariable,"imageName": imageName }
 
 
     def output(self, outputPath):
